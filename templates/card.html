@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .card {
+      width: 400px;
+      height: 200px;
+      background-color: #c8e6c9;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: all 0.5s ease-in-out;
+      margin: 10px;
+      font-family: Arial;
+      font-size: 24px;
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-front {
+      color: white;
+      z-index: 2;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      color: black;
+      z-index: 1;
+    }
+
+    .card:hover {
+      transform: rotateY(180deg);
+    }
+
+    .cards-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Набор карточек</h1>
+
+  <div class="cards-container">
+    <!-- Отображение карточек -->
+    {% for card in cards %}
+      <div class="card">
+        <div class="card-front">{{ card.front }}</div>
+        <div class="card-back">{{ card.back }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
